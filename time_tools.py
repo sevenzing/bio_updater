@@ -57,10 +57,13 @@ def translate_time(date: datetime.datetime):
         else:
             return ' '.join([hour_word, minute_word]) 
 
-def get_current_time_in_words():
-    now = datetime.datetime.now(
+def get_now() -> datetime.datetime:
+    return  datetime.datetime.now(
         pytz.timezone(TIME_ZONE)
         )
+
+def get_current_time_in_words():
+    now = get_now()
     try:
         return translate_time(now)
     except:

@@ -8,7 +8,7 @@ import re
 import logging
 
 from config import BIO_MESSAGE
-from time_transaltion import get_current_time_in_words
+from time_tools import get_current_time_in_words, get_now
 
 
 class Client:

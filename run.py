@@ -13,9 +13,8 @@ async def forever(function, interval, args):
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s')
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
-account_cridentials = credentials['lev']
 
-client = Client(**account_cridentials, try_logging_in=True)
+client = Client(**credentials, try_logging_in=True)
 print(client)
 
 loop = get_event_loop()

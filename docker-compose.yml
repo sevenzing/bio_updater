@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+    updater:
+        build: .
+        env_file: .env
+

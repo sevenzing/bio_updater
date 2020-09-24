@@ -1,5 +1,5 @@
 import os
-from cridentials import credentials
+from credentials import credentials
 
 CHECK_INTERVAL = int(os.environ.get('CHECK_INTERVAL', ''))
 

@@ -4,4 +4,7 @@ services:
     updater:
         build: .
         env_file: .env
+        
+    volumes:
+        - ./account0.session:/account0.session
 

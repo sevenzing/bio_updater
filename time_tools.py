@@ -50,7 +50,8 @@ def translate_time(date: datetime.datetime):
         if minute == 45:
             return f"без {choice(['пятнадцати', 'четверти'])} {hour_in_nominative(hour + 1, only_number=True)}"
         return f"без {minute_in_genitive(60 - minute)} минут {hour_in_nominative(hour + 1, only_number=True)}"
-        
+    elif 1 <= minute <= 9 and percent_chance(80):
+        return f"{single_hour_word} ноль {single_minute_word}"
     else:
         if minute % 10 == 0 and percent_chance(80):
             return ' '.join([single_hour_word, single_minute_word])   

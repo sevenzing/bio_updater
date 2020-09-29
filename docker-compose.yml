@@ -1,10 +1,8 @@
-version: "3.7"
+version: "3.6"
 
 services:
     updater:
         build: .
-        env_file: .env
-        
-    volumes:
-        - ./account0.session:/account0.session
+        volumes:
+            - ./account0.session:/account0.session
 

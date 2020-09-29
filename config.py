@@ -1,8 +1,8 @@
 import os
 from credentials import credentials
 
-CHECK_INTERVAL = int(os.environ.get('CHECK_INTERVAL', ''))
+CHECK_INTERVAL = 3
 
-TIME_ZONE = os.getenv('TIME_ZONE', '')
+TIME_ZONE = 'Etc/GMT-3'
 
 BIO_MESSAGE = 'Сейчас %s.'

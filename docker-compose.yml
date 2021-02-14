@@ -6,3 +6,4 @@ services:
         volumes:
             - ./account0.session:/account0.session
 
+        restart: always

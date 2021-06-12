@@ -1,8 +1,9 @@
-from config import credentials, CHECK_INTERVAL
+from config import CHECK_INTERVAL
 from utils import is_connected
-from client import Client
 from asyncio import run_coroutine_threadsafe, get_event_loop, sleep
 import logging
+from client import Client
+from misc import client_account
 
 
 async def internet_pooling(function, interval, kwargs):
@@ -25,9 +26,7 @@ async def internet_pooling(function, interval, kwargs):
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s')
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
-
-client = Client(**credentials, try_logging_in=True)
-print(client)
+print(client_account)
 
 loop = get_event_loop()
 
@@ -35,7 +34,7 @@ future = internet_pooling(
         function=Client.set_time_to_bio, 
         interval=CHECK_INTERVAL,
         kwargs={
-            'self': client,
+            'self': client_account,
             })
 
 loop.run_until_complete(future)

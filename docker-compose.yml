@@ -3,7 +3,12 @@ version: "3.6"
 services:
     updater:
         build: .
-        volumes:
-            - ./account0.session:/account0.session
-
         restart: always
+        volumes: 
+            - ./sessions:/updater/sessions
+
+    session_creator:
+        build: .
+        volumes: 
+            - ./sessions:/updater/sessions
+        command: python misc.py

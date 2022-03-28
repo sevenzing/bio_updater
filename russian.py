@@ -68,3 +68,21 @@ def hour_in_genitive(hour: int):
     ]
     
     return numbers[hour - 1]
+
+def day_in_nominative(day: int, only_number=False):
+    days_in_words = number_to_russian(day)
+    return days_in_words + \
+        (normilize_word(day, ' день', ' дня', ' дней') if not only_number else '')
+ 
+
+def enumerate_items_to_string(items: list, join_word='и'):
+    """
+    Enumerate items to string like 'one, two and three'
+    """
+    str_items = list(map(str, items))
+    
+    first_part = ', '.join(str_items[:-1])
+    if first_part:
+        return f' {join_word} '.join([first_part, str_items[-1]])
+    else:
+        return str_items[-1]

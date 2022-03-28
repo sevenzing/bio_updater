@@ -8,9 +8,9 @@ from typing import List, Dict
 import re
 import logging
 
-from config import BIO_MESSAGES
+from config import BIO_MESSAGES, TIME_LEFT_MESSAGE
 from random import choice 
-from time_tools import get_current_time_in_words, get_now
+from time_tools import get_current_time_in_words, get_now, get_passed_time_in_words
 from asyncio import sleep
 from datetime import timedelta
 
@@ -41,6 +41,9 @@ class Client:
 
     async def set_time_to_bio(self):
         await self.edit_bio(choice(BIO_MESSAGES) % get_current_time_in_words())
+    
+    async def set_time_left_to_bio(self):
+        await self.edit_bio(TIME_LEFT_MESSAGE % get_passed_time_in_words())
 
     def __str__(self):
         me = self.account.get_me()

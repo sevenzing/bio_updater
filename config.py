@@ -1,5 +1,8 @@
-import os
+import datetime
+import pytz
+
 from credentials import credentials
+
 
 CHECK_INTERVAL = 3
 
@@ -17,3 +20,7 @@ BIO_MESSAGES = [
     'Точное время: %s',
     'МСК время: %s',
     ]
+
+DATE_FROM = datetime.datetime(2022, 2, 24, 3, 0, 0, tzinfo=pytz.UTC) 
+
+TIME_LEFT_MESSAGE = 'Прошло уже %s'

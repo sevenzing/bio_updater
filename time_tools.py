@@ -1,13 +1,17 @@
-from config import TIME_ZONE
-from datetime import timedelta
-from random import randrange, randint
-import random
 import dataclasses
 import datetime
 import pytz
-import typing
+import random
 
-from russian import hour_in_nominative, hour_in_genitive, minute_in_genitive, minute_in_nominative
+from config import DATE_FROM, TIME_ZONE
+from datetime import timedelta
+from random import randrange
+
+from russian import (
+    day_in_nominative, enumerate_items_to_string, hour_in_nominative, hour_in_genitive, 
+    minute_in_genitive, minute_in_nominative, 
+    number_to_russian, normilize_word,
+)
 
 @dataclasses.dataclass
 class TranslateOption:
@@ -95,3 +99,22 @@ def get_current_time_in_words():
         return translate_time(now)
     except:
         return now.strftime("%H %M")
+
+
+def translate_time_delta(delta: datetime.timedelta) -> str:
+    minutes = (delta.seconds // 60) % 60
+    hours = (delta.seconds // 3600) % 24
+    days = delta.days
+    res = []
+
+    if days > 0:
+        res.append(day_in_nominative(days))  
+    if hours > 0:
+        res.append(number_to_russian(hours) + normilize_word(hours, ' час', ' часа', ' часов'))
+    if minutes > 0:
+        res.append(minute_in_nominative(minutes))
+
+    return enumerate_items_to_string(res, join_word='и')
+
+def get_passed_time_in_words(date_from: datetime.datetime = DATE_FROM) -> str:
+    return translate_time_delta(get_now() - date_from)

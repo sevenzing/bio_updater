@@ -6,7 +6,7 @@ from client import Client
 from misc import client_account
 
 
-async def internet_pooling(function, interval, kwargs):
+async def internet_pooling(function, interval, **kwargs):
     max_sleep = 15 * 60
     sleep_if_no_internet = interval
 
@@ -31,10 +31,8 @@ print(client_account)
 loop = get_event_loop()
 
 future = internet_pooling(
-        function=Client.set_time_to_bio, 
+        function=client_account.set_time_left_to_bio, 
         interval=CHECK_INTERVAL,
-        kwargs={
-            'self': client_account,
-            })
+    )
 
 loop.run_until_complete(future)

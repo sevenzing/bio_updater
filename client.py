@@ -4,7 +4,7 @@ import telethon
 from asyncio import sleep
 from datetime import timedelta
 from random import choice 
-from telethon import TelegramClient
+from telethon import TelegramClient, sync
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.tl.functions.account import UpdateProfileRequest
 

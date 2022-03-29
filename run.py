@@ -1,9 +1,10 @@
-from config import CHECK_INTERVAL
-from utils import is_connected
-from asyncio import run_coroutine_threadsafe, get_event_loop, sleep
 import logging
-from client import Client
+
+from asyncio import get_event_loop, sleep
+
+from config import CHECK_INTERVAL
 from misc import client_account
+from utils import is_connected
 
 
 async def internet_pooling(function, interval, **kwargs):

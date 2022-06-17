@@ -6,7 +6,7 @@ def number_to_russian(number):
 
 
 def normilize_word(number: int, one, two, five):
-    if 5 <= number <= 19:
+    if 5 <= number % 100 <= 19:
         return five
     elif (number % 10) == 1:
         return one

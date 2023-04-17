@@ -11,15 +11,10 @@ TIME_ZONE = 'Etc/GMT-3'
 INTERNET_CHECK_URL = '1.1.1.1'
 
 BIO_MESSAGES = [
-    'Сейчас %s.',
-    'Кстати, сейчас %s.',
-    'Кстати, сейчас уже %s.',
-    'Уже %s.',
-    'На часах %s',
+    'Сейчас %s',
+    'Уже %s',
     '%s',
-    'Точное время: %s',
-    'МСК время: %s',
-    ]
+]
 
 DATE_FROM = datetime.datetime(2022, 2, 24, 3, 0, 0, tzinfo=pytz.UTC) 
 

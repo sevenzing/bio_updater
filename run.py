@@ -5,7 +5,7 @@ from asyncio import get_event_loop, sleep
 from config import CHECK_INTERVAL
 from misc import client_account
 from utils import is_connected
-
+import argparse
 
 async def internet_pooling(function, interval, **kwargs):
     max_sleep = 15 * 60
@@ -23,16 +23,27 @@ async def internet_pooling(function, interval, **kwargs):
             sleep_if_no_internet += interval
         
 
+parser = argparse.ArgumentParser(description='Auto bio updater')
+
+parser.add_argument('--mode', default='current_time', help='mode of bio updater (default: find the max)')
+args = parser.parse_args()
+
+
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s')
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
-print(client_account)
+if args.mode == 'current_time':
+    function = client_account.set_time_to_bio
+elif args.mode == 'time_left':
+    function = client_account.set_time_left_to_bio
+else:
+    raise Exception('invalid mode. expected: "current_time", "time_left"')
 
 loop = get_event_loop()
 
 future = internet_pooling(
-        function=client_account.set_time_left_to_bio, 
+        function=function, 
         interval=CHECK_INTERVAL,
     )
 

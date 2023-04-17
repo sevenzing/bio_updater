@@ -1,3 +1,5 @@
+.DS_Store
+
 sessions/
 credentials.py
 # Byte-compiled / optimized / DLL files
